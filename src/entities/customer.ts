@@ -1,15 +1,22 @@
+import { randomUUID } from "crypto";
 import { Address } from "./address";
 
+type CustomerProps = {
+  id?: string;
+  name: string;
+  address?: Address;
+  active?: boolean;
+};
 export class Customer {
   _id: string;
   _name: string;
   _address?: Address;
   _active: boolean = false;
 
-  constructor(id: string, name: string, address?: Address) {
-    this._id = id;
-    this._name = name;
-    this._address = address;
+  constructor(props: CustomerProps) {
+    this._id = props.id ?? randomUUID();
+    this._name = props.name;
+    this._address = props.address;
     this.validate();
   }
 
@@ -56,7 +63,19 @@ export class Customer {
     return this._name;
   }
 
+  set Address(address: Address) {
+    this._address = address;
+  }
   updateAddress(address: Address) {
     this._address = address;
+  }
+
+  toJSON() {
+    return {
+      id: this._id,
+      name: this._name,
+      address: this._address,
+      active: this._active,
+    };
   }
 }

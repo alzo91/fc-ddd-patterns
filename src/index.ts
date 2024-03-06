@@ -1,7 +1,9 @@
 import { Address } from "./entities/address";
 import { Customer } from "./entities/customer";
+import { Order } from "./entities/order";
+import { OrderItem } from "./entities/order_item";
 
-let customer = new Customer("uuid-0001", "Lavínia Zotarelli");
+let customer = new Customer({ name: "Lavínia Zotarelli de Oliveira" });
 console.log(JSON.stringify({ customer }));
 let address = new Address({
   city: "Campinas",
@@ -10,6 +12,17 @@ let address = new Address({
   street: "Vitor Meirelles",
   zip_code: "13046-545",
 });
-customer.updateAddress(address);
+
+customer.Address = address;
 customer.activate();
 console.log(JSON.stringify({ customer }));
+
+const item_one = new OrderItem({ name: "mouse", quantity: 2, price: 10.9 });
+const item_two = new OrderItem({ name: "pencil", quantity: 4, price: 2.5 });
+
+const order = new Order({
+  customerId: customer.id,
+  items: [item_one, item_two],
+});
+
+console.log(JSON.stringify(order));
