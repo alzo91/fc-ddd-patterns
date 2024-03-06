@@ -8,10 +8,10 @@ type CustomerProps = {
   active?: boolean;
 };
 export class Customer {
-  _id: string;
-  _name: string;
-  _address?: Address;
-  _active: boolean = false;
+  private _id: string;
+  private _name: string;
+  private _address?: Address;
+  private _active: boolean = false;
 
   constructor(props: CustomerProps) {
     this._id = props.id ?? randomUUID();
@@ -63,16 +63,17 @@ export class Customer {
     return this._name;
   }
 
-  set Address(address: Address) {
-    this._address = address;
+  get isActive(): boolean {
+    return this._active;
   }
-  updateAddress(address: Address) {
+  /** setters */
+  set Address(address: Address) {
     this._address = address;
   }
 
   toJSON() {
     return {
-      id: this._id,
+      id: this.id,
       name: this._name,
       address: this._address,
       active: this._active,
