@@ -1,5 +1,5 @@
-import { Address } from "./Entities/address";
-import { Customer } from "./Entities/customer";
+import { Address } from "./entities/address";
+import { Customer } from "./entities/customer";
 
 let customer = new Customer("uuid-0001", "Lavínia Zotarelli");
 console.log(JSON.stringify({ customer }));
