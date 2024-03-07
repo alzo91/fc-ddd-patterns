@@ -63,6 +63,10 @@ export class Customer {
     return this._name;
   }
 
+  get address(): Address | undefined {
+    return this._address;
+  }
+
   get isActive(): boolean {
     return this._active;
   }
