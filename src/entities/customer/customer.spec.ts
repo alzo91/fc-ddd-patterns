@@ -1,5 +1,5 @@
-import { Customer } from "./customer";
-import { Address } from "./address";
+import { Customer } from "./index";
+import { Address } from "../address";
 
 describe("Customer", () => {
   it("should create a customer with valid properties", () => {
@@ -88,15 +88,15 @@ describe("Customer", () => {
   it("should activate the customer", () => {
     const customer = new Customer({
       name: "John Doe Company",
-      address: new Address({
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zip_code: "12345",
-        neighborhood: "Anytown",
-      }),
     });
 
+    customer.Address = new Address({
+      street: "123 Main St",
+      city: "Anytown",
+      state: "CA",
+      zip_code: "12345",
+      neighborhood: "Anytown",
+    });
     customer.activate();
 
     expect(customer.isActive).toBe(true);

@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-import { OrderItem } from "./order_item";
+import { OrderItem } from "../order_items";
 
 type OrderItemProps = {
   id?: string;

@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-import { Address } from "./address";
+import { Address } from "../address";
 
 type CustomerProps = {
   id?: string;
