@@ -17,8 +17,18 @@ customer.Address = address;
 customer.activate();
 console.log(JSON.stringify({ customer }));
 
-const item_one = new OrderItem({ name: "mouse", quantity: 2, price: 10.9 });
-const item_two = new OrderItem({ name: "pencil", quantity: 4, price: 2.5 });
+const item_one = new OrderItem({
+  name: "mouse",
+  quantity: 2,
+  price: 10.9,
+  productId: "product_uuid_001",
+});
+const item_two = new OrderItem({
+  name: "pencil",
+  quantity: 4,
+  price: 2.5,
+  productId: "product_uuid_002",
+});
 
 const order = new Order({
   customerId: customer.id,

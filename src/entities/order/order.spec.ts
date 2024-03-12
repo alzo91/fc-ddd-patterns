@@ -35,13 +35,26 @@ describe("", () => {
   });
 
   it("should be able to calculate total", () => {
-    const item1 = new OrderItem({ name: "pencil", quantity: 10, price: 2 });
-    const item2 = new OrderItem({ name: "pen", quantity: 10, price: 4 });
+    const item1 = new OrderItem({
+      name: "pencil",
+      quantity: 10,
+      price: 2,
+      productId: "product_uuid_001",
+    });
+    const item2 = new OrderItem({
+      name: "pen",
+      quantity: 10,
+      price: 4,
+      productId: "product_uuid_002",
+    });
     const order = new Order({
       customerId: "customer-id",
       items: [item1, item2],
     });
 
     expect(order.total()).toBe(60);
+    expect(order.toJSON()).toHaveProperty("id");
+    expect(order.toJSON()).toHaveProperty("items");
+    expect(order.toJSON()).toHaveProperty("amount");
   });
 });
