@@ -1,4 +1,4 @@
-import { IncreasePriceProduct } from "./index";
+import { IncreasePriceProduct } from "./index.service";
 import { Product } from "../../entities/product";
 
 describe("Increase price of product unit test", () => {
