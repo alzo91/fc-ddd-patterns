@@ -153,4 +153,25 @@ describe("Customer", () => {
       active: true,
     });
   });
+
+  it("should be able to add rewards points", () => {
+    const customer = new Customer({
+      name: "John Doe Company",
+      address: new Address({
+        street: "123 Main St",
+        city: "Anytown",
+        state: "CA",
+        zip_code: "12345",
+        neighborhood: "Anytown",
+      }),
+    });
+    expect(customer.rewards_points).toBe(0);
+    customer.activate();
+
+    customer.addRewards(100);
+    expect(customer.rewards_points).toBe(100);
+
+    customer.addRewards(100);
+    expect(customer.rewards_points).toBe(200);
+  });
 });

@@ -12,6 +12,7 @@ export class Customer {
   private _name: string;
   private _address?: Address;
   private _active: boolean = false;
+  private _rewards_points: number = 0;
 
   constructor(props: CustomerProps) {
     this._id = props.id ?? randomUUID();
@@ -54,6 +55,10 @@ export class Customer {
     this._active = false;
   }
 
+  addRewards(rewards: number): void {
+    this._rewards_points += rewards;
+  }
+
   /** getters */
   get id(): string {
     return this._id;
@@ -69,6 +74,10 @@ export class Customer {
 
   get isActive(): boolean {
     return this._active;
+  }
+
+  get rewards_points(): number {
+    return this._rewards_points;
   }
   /** setters */
   set Address(address: Address) {
