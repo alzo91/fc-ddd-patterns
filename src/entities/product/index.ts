@@ -25,6 +25,9 @@ export class Product {
       throw new Error("Product name must be at least 5 characters");
   }
 
+  get price(): number {
+    return this._price;
+  }
   get name(): string {
     return this._name;
   }
