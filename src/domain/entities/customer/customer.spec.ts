@@ -90,13 +90,14 @@ describe("Customer", () => {
       name: "John Doe Company",
     });
 
-    customer.Address = new Address({
+    const address = new Address({
       street: "123 Main St",
       city: "Anytown",
       state: "CA",
       zip_code: "12345",
       neighborhood: "Anytown",
     });
+    customer.changeAddress(address);
     customer.activate();
 
     expect(customer.isActive).toBe(true);

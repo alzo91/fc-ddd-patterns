@@ -43,6 +43,10 @@ export class Customer {
     this.validate(); /** after changing we are validating it */
   }
 
+  changeAddress(address: Address) {
+    this._address = address;
+    this.validate();
+  }
   activate() {
     if (this._address === undefined) {
       /** auto-validation */

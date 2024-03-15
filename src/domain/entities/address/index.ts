@@ -7,28 +7,47 @@ type IAddress = {
 };
 
 export class Address {
-  private zip_code: string;
-  private street: string;
-  private neighborhood: string;
-  private city: string;
-  private state: string;
+  private _zip_code: string;
+  private _street: string;
+  private _neighborhood: string;
+  private _city: string;
+  private _state: string;
 
   constructor(props: IAddress) {
-    this.zip_code = props.zip_code;
-    this.state = props.state;
-    this.city = props.city;
-    this.neighborhood = props.neighborhood;
-    this.street = props.street;
+    this._zip_code = props.zip_code;
+    this._state = props.state;
+    this._city = props.city;
+    this._neighborhood = props.neighborhood;
+    this._street = props.street;
     this.validate();
   }
 
   validate() {
-    if (this.state.length === 0 || this.state.length > 2) {
+    if (this._state.length === 0 || this._state.length > 2) {
       throw new Error(`State is required and it should be 2 chars`);
     }
 
-    if (this.street.length === 0) {
+    if (this._street.length === 0) {
       throw new Error("Street is required");
     }
+  }
+
+  get zip_code() {
+    return this._zip_code;
+  }
+
+  get street() {
+    return this._street;
+  }
+
+  get neighborhood() {
+    return this._neighborhood;
+  }
+  get city() {
+    return this._city;
+  }
+
+  get state() {
+    return this._state;
   }
 }
