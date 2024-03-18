@@ -28,8 +28,6 @@ export class OrderRepository implements OrderRepositoryInterface {
     );
   }
   async update(entity: Order): Promise<void> {
-    console.log("update | new items: ", entity.items.length);
-
     await OrderItemModel.destroy({
       where: { order_id: entity.id },
     });
