@@ -4,7 +4,7 @@ import CustomerModel from "../../db/sequelize/model/customer-model";
 import { CustomerRepository } from "./customer-repository";
 import { Customer } from "../../../domain/entities/customer";
 import { Address } from "../../../domain/entities/address";
-
+import { db_sequelize_options_for_test } from "../../db/sequelize/db-sequelize-options-for-test";
 describe("Customer repository test", () => {
   let sequelize: Sequelize;
   let customerRepository: CustomerRepository;
@@ -14,13 +14,10 @@ describe("Customer repository test", () => {
   });
   beforeEach(async () => {
     sequelize = new Sequelize({
-      dialect: "sqlite",
-      storage: ":memory:",
-      logging: false,
-      sync: { force: true },
+      ...db_sequelize_options_for_test,
     });
 
-    await sequelize.addModels([CustomerModel]);
+    sequelize.addModels([CustomerModel]);
     await sequelize.sync();
   });
 

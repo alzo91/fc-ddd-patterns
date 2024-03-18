@@ -5,7 +5,6 @@ import CustomerModel from "../../db/sequelize/model/customer-model";
 
 export class CustomerRepository implements CustomerRepositoryInterface {
   async create(entity: Customer): Promise<void> {
-    console.log(entity.toJSON());
     await CustomerModel.create({
       id: entity.id,
       name: entity.name,
