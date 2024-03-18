@@ -30,6 +30,10 @@ export class Order {
   get items(): OrderItem[] {
     return this._items;
   }
+
+  addItem(item: OrderItem): void {
+    this._items.push(item);
+  }
   validate(): void {
     if (!this._id) throw new Error("Order requires an ID");
     if (!this._customerId) throw new Error("Order requires an customerId");
